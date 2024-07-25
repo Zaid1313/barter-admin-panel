@@ -6,6 +6,7 @@ import { IoMdMegaphone } from "react-icons/io";
 import { FaShoppingCart } from "react-icons/fa";
 import { FaUserLarge } from "react-icons/fa6";
 import { IoMdSettings } from "react-icons/io";
+import { Link } from "react-router-dom";
 
 export default function SideBar({ isOpen }) {
   return (
@@ -23,33 +24,26 @@ export default function SideBar({ isOpen }) {
               style={{ width: 178, height: 37 }}
             />
           </li>
-          <li className="d-flex align-items-center sidebar-opt">
-            <FaTh style={{ width: 16, height: 16 }} />
-            <a>DASHBOARD</a>
+          <li style={{}} className="d-flex align-items-center sidebar-opt">
+            <Link to="/"><FaTh style={{ width: 16, height: 16, margin: "0px 15px 3px 0px"}} />DASHBOARD</Link>
           </li>
           <li className="d-flex align-items-center sidebar-opt">
-            <MdGroups style={{ width: 16, height: 16 }} />
-            <a>BRANDS</a>
+            <Link to="/all-brands"><MdGroups style={{ width: 16, height: 16, margin: "0px 15px 3px 0px"}} />BRANDS</Link>
           </li>
           <li className="d-flex align-items-center sidebar-opt">
-            <TiGroup style={{ width: 16, height: 16 }} />
-            <a>INFLUENCER</a>
+            <Link><TiGroup style={{ width: 16, height: 16, margin: "0px 15px 3px 0px"}} />INFLUENCER</Link>
           </li>
           <li className="d-flex align-items-center sidebar-opt">
-            <IoMdMegaphone style={{ width: 16, height: 16 }} />
-            <a>DEALS</a>
+            <Link><IoMdMegaphone style={{ width: 16, height: 16, margin: "0px 15px 3px 0px"}} />DEALS</Link>
           </li>
           <li className="d-flex align-items-center sidebar-opt">
-            <FaShoppingCart style={{ width: 16, height: 16 }} />
-            <a>SUBSCRIPTIONS</a>
+            <Link><FaShoppingCart style={{ width: 16, height: 16, margin: "0px 15px 3px 0px"}} />SUBSCRIPTIONS</Link>
           </li>
           <li className="d-flex align-items-center sidebar-opt">
-            <FaUserLarge style={{ width: 16, height: 16 }} />
-            <a>ACCOUNT MANAGER</a>
+            <Link><FaUserLarge style={{ width: 16, height: 16, margin: "0px 15px 3px 0px"}} />ACCOUNT MANAGER</Link>
           </li>
           <li className="d-flex align-items-center sidebar-opt">
-            <IoMdSettings style={{ width: 16, height: 16 }} />
-            <a>SETTING</a>
+            <Link><IoMdSettings style={{ width: 16, height: 16, margin: "0px 15px 3px 0px"}} />SETTING</Link>
           </li>
         </ul>
       </div>

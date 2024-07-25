@@ -1,9 +1,10 @@
 import "./App.css";
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "../node_modules/bootstrap/dist/js/bootstrap.bundle";
 import "../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js";
 import Home from "./screens/Home";
+import Brands from "./screens/Brands.js";
 import SideBar from "./components/Sidebar";
 import Navbar from "./components/Navbar";
 import React, { useState } from "react";
@@ -21,12 +22,18 @@ function App() {
         <div className={`sidebarPages ${isOpen ? "sidebar-open" : "sidebar-closed"}`}>
           <SideBar isOpen={isOpen} />
           <div className="content">
-            <Router>
               <Routes>
                 <Route path="/" element={<Home />} />
+                <Route path="/all-brands" element={<Brands />} />
               </Routes>
-            </Router>
           </div>
+          {/* <footer>
+          <div className="footer">
+            <div className="footer-text">
+              &copy; 2024 Your Company. All Rights Reserved.
+            </div>
+          </div>
+          </footer> */}
         </div>
     </>
   );
