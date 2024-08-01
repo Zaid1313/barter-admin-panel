@@ -121,9 +121,9 @@ body {
   background-color: #b8a4f0; 
 }
 
-.sidebar-opt a:focus {
+a.active{
   color: #FFF;
-  background-color: #6750A4; 
+  background-color: #6750A4;
 }
 
 /* Css for sidebar and page responsiveness */
@@ -144,10 +144,31 @@ body {
 
 .content{
   margin-top: 10px;
-  width: 100vw;
+  width: 100%;
 }
 
-@media (max-width: 600px) {
+@media (min-width: 1400px) {
+  .sidebar-open .content {
+    margin-left: 330px;
+    margin-right: 200px;
+  }
+  
+  .sidebar-closed .content {
+    margin-left: 215px;
+    margin-right: 215px;
+  }  
+
+  .content{
+    display: flex;
+    justify-content: center;
+  }
+
+  .totalB-I-D .item{
+    margin-left: 30px;
+  }
+}
+
+/* @media (max-width: 600px) {
   #sidebar {
     position: static;
     height: auto;
@@ -167,26 +188,25 @@ body {
   #sidebar ul li {
     display: inline-block;
   }
-}
+} */
 
 /* CSS for Footer
 
-.sidebar-open .footer {
-  background-color: #171A1F;
-  color: #FFFFFF;
-  display: flex;
-  justify-content: space-between;
+.footer {
+  color: #000000;
+  display: block;
   align-items: center;
-  padding: 20px;
+  padding: 5px;
   position: fixed;
   bottom: 0;
-  width: 30px;
+  width: 100vw;
+  font-size: 12px;
   z-index: 1000;
-} */
+}
 
 .footer-text {
   font-family: 'Manrope', sans-serif;
-}
+} */
 
 /* css for home pages */
 
@@ -430,9 +450,20 @@ body {
   font-weight: 400;
 }
 
+.hotSectionContainer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.hotSection {
+  max-width: 1200px;
+  width: 100%;
+}
+
 .hotSection{
   padding: 0 10px;
-  position: relative;
+  padding-left: 25px;
 }
 
 .hotSectionTableHome{
@@ -440,6 +471,72 @@ body {
   margin-top: 15px;
 }
 
-.hotDealsHome{
-  /* margin-left: 10px; */
+/* .hotDealsHome{
+   margin-left: 10px; 
+} */
+
+.tableControls {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 10px;
+}
+
+.tableControls select,
+.tableControls input {
+  padding: 5px;
+  margin-right: 10px;
+}
+
+.brand-N-B{
+  position: absolute;
+  left: 8rem;
+  bottom: 1.2rem;
+  color: #FFF;
+}
+
+.brand-N-B h5 {
+  margin-bottom: 0;
+  font-size: 15px;
+}
+
+.brand-N-B p{
+  margin-bottom: 0;
+  font-size: 14px;
+}
+
+.brand-info-card{
+  width: 18.5rem;
+  height: 12.5625rem;
+  border-radius: 4px;
+  border: 1px solid #D0BCFF;
+  padding: 8px 0 0 15px;
+}
+
+.brand-info-card h3{
+  color: #6750A4;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px;
+}
+
+.brand-info-card p{
+  color: #7C7F82;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 22px;
+  margin-bottom: 10px;
+}
+
+.info-brand{
+  display: flex;
+  flex-direction: row;
+}
+
+.info-brand div p{
+  color: #7C7F82;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 24px;
+  margin-bottom: 0;
 }

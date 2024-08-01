@@ -6,11 +6,11 @@ import { IoMdMegaphone } from "react-icons/io";
 import { FaShoppingCart } from "react-icons/fa";
 import { FaUserLarge } from "react-icons/fa6";
 import { IoMdSettings } from "react-icons/io";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export default function SideBar({ isOpen }) {
   return (
-    <div id="sidebar" className={isOpen ? "open" : "closed"}>
+    <nav id="sidebar" className={isOpen ? "open" : "closed"}>
       <div id="barterLogo">
         <img src={"/images/sidebar/TrichromaticLogoB2 1.png"} alt="logo" />
       </div>
@@ -25,28 +25,28 @@ export default function SideBar({ isOpen }) {
             />
           </li>
           <li style={{}} className="d-flex align-items-center sidebar-opt">
-            <Link to="/"><FaTh style={{ width: 16, height: 16, margin: "0px 15px 3px 0px"}} />DASHBOARD</Link>
+            <NavLink to="/" activeclassname="active"><FaTh style={{ width: 16, height: 16, margin: "0px 15px 3px 0px"}} />DASHBOARD</NavLink>
           </li>
           <li className="d-flex align-items-center sidebar-opt">
-            <Link to="/all-brands"><MdGroups style={{ width: 16, height: 16, margin: "0px 15px 3px 0px"}} />BRANDS</Link>
+            <NavLink to="/all-brands" activeclassname="active"><MdGroups style={{ width: 16, height: 16, margin: "0px 15px 3px 0px"}} />BRANDS</NavLink>
           </li>
           <li className="d-flex align-items-center sidebar-opt">
-            <Link><TiGroup style={{ width: 16, height: 16, margin: "0px 15px 3px 0px"}} />INFLUENCER</Link>
+            <NavLink to="" activeclassname="active"><TiGroup style={{ width: 16, height: 16, margin: "0px 15px 3px 0px"}} />INFLUENCER</NavLink>
           </li>
           <li className="d-flex align-items-center sidebar-opt">
-            <Link><IoMdMegaphone style={{ width: 16, height: 16, margin: "0px 15px 3px 0px"}} />DEALS</Link>
+            <NavLink activeclassname="active"><IoMdMegaphone style={{ width: 16, height: 16, margin: "0px 15px 3px 0px"}} />DEALS</NavLink>
           </li>
           <li className="d-flex align-items-center sidebar-opt">
-            <Link><FaShoppingCart style={{ width: 16, height: 16, margin: "0px 15px 3px 0px"}} />SUBSCRIPTIONS</Link>
+            <NavLink activeclassname="active"><FaShoppingCart style={{ width: 16, height: 16, margin: "0px 15px 3px 0px"}} />SUBSCRIPTIONS</NavLink>
           </li>
           <li className="d-flex align-items-center sidebar-opt">
-            <Link><FaUserLarge style={{ width: 16, height: 16, margin: "0px 15px 3px 0px"}} />ACCOUNT MANAGER</Link>
+            <NavLink activeclassname="active"><FaUserLarge style={{ width: 16, height: 16, margin: "0px 15px 3px 0px"}} />ACCOUNT MANAGER</NavLink>
           </li>
           <li className="d-flex align-items-center sidebar-opt">
-            <Link><IoMdSettings style={{ width: 16, height: 16, margin: "0px 15px 3px 0px"}} />SETTING</Link>
+            <NavLink activeclassname="active"><IoMdSettings style={{ width: 16, height: 16, margin: "0px 15px 3px 0px"}} />SETTING</NavLink>
           </li>
         </ul>
       </div>
-    </div>
+    </nav>
   );
 }

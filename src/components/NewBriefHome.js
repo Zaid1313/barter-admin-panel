@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 // import { FaArrowRight } from "react-icons/fa";
 import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const items = [
   {
@@ -52,7 +52,7 @@ const items = [
   // Add more items as needed
 ];
 
-export default function NewBriefHomeCarousel () {
+export default function NewBriefHomeCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedOptions, setSelectedOptions] = useState({});
 
@@ -69,7 +69,9 @@ export default function NewBriefHomeCarousel () {
   const prevSlide = () => {
     setCurrentIndex((prevIndex) => {
       const newIndex = prevIndex - itemsPerSlide;
-      return newIndex < 0 ? items.length - (items.length % itemsPerSlide || itemsPerSlide) : newIndex;
+      return newIndex < 0
+        ? items.length - (items.length % itemsPerSlide || itemsPerSlide)
+        : newIndex;
     });
   };
 
@@ -78,9 +80,9 @@ export default function NewBriefHomeCarousel () {
   };
 
   const handleOptionChange = (id, value) => {
-    setSelectedOptions(prevState => ({
+    setSelectedOptions((prevState) => ({
       ...prevState,
-      [id]: value
+      [id]: value,
     }));
   };
 
@@ -88,13 +90,16 @@ export default function NewBriefHomeCarousel () {
     const selectedOption = selectedOptions[id];
     if (selectedOption) {
       try {
-        const response = await fetch.post('YOUR_BACKEND_URL', { id, selectedOption });
-        console.log('Response:', response.data);
+        const response = await fetch.post("YOUR_BACKEND_URL", {
+          id,
+          selectedOption,
+        });
+        console.log("Response:", response.data);
       } catch (error) {
-        console.error('Error submitting selected option:', error);
+        console.error("Error submitting selected option:", error);
       }
     } else {
-      alert('No POC selected for this campaign', id);
+      alert("No POC selected for this campaign", id);
     }
   };
 
@@ -102,7 +107,11 @@ export default function NewBriefHomeCarousel () {
 
   return (
     <div className="custom-carousel">
-      <button className="carousel-control prev" style={{ color: "#A180DB" }} onClick={prevSlide}>
+      <button
+        className="carousel-control prev"
+        style={{ color: "#A180DB" }}
+        onClick={prevSlide}
+      >
         <IoIosArrowBack />
       </button>
       <div className="carousel-items">
@@ -111,7 +120,12 @@ export default function NewBriefHomeCarousel () {
             <div style={{ padding: "14px 0 11px 14px" }}>
               <div className="d-flex">
                 <img
-                  style={{ borderRadius: "20px", width: "39px", height: "39px", marginTop: "2px" }}
+                  style={{
+                    borderRadius: "20px",
+                    width: "39px",
+                    height: "39px",
+                    marginTop: "2px",
+                  }}
                   src={item.imgSrc}
                   alt=""
                 />
@@ -120,7 +134,10 @@ export default function NewBriefHomeCarousel () {
                   <h5>{item.brand}</h5>
                 </div>
               </div>
-              <div style={{top:'0px', height:'28px'}} className="postInfluCount">
+              <div
+                style={{ top: "0px", height: "28px" }}
+                className="postInfluCount"
+              >
                 <div>
                   <h4>{item.posts}</h4>
                   <p>Posts</p>
@@ -129,19 +146,22 @@ export default function NewBriefHomeCarousel () {
                   <h4>{item.influencers}</h4>
                   <p>Influencers</p>
                 </div>
-                <img src="images/homePage/instaIcon.png" alt=""/>
+                <img src="images/homePage/instaIcon.png" alt="" />
               </div>
             </div>
             <select
-            style={{
+              style={{
                 width: "250px",
                 height: "30px",
-                marginLeft:"15px"
-            }}
+                marginLeft: "15px",
+              }}
               className="POC-drop"
               onChange={(e) => handleOptionChange(item.id, e.target.value)}
+              
             >
-              <option style={{color: 'gray'}} value="">Assign POC</option>
+              <option style={{ color: "gray" }} value="">
+                Assign POC
+              </option>
               <option value="Aman">Aman</option>
               <option value="Bazil">Bazil</option>
               <option value="Jojo">Jojo</option>
@@ -149,27 +169,38 @@ export default function NewBriefHomeCarousel () {
               <option value="Sakshi">Sakshi</option>
               <option value="JD">JD</option>
               <option value="Pratham">Pratham</option>
-
             </select>
-            <button style={{
+            <button
+              style={{
                 marginTop: "5px",
-                color: "#292727"
-            }} className='reportCardBtn' onClick={() => handleSubmit(item.id)}>Submit</button>
+                color: "#292727",
+              }}
+              className="reportCardBtn"
+              onClick={() => handleSubmit(item.id)}
+            >
+              Submit
+            </button>
           </div>
         ))}
       </div>
-      <button className="carousel-control next" style={{ color: "#A180DB" }} onClick={nextSlide}>
+      <button
+        className="carousel-control next"
+        style={{ color: "#A180DB" }}
+        onClick={nextSlide}
+      >
         <IoIosArrowForward />
       </button>
       <div style={{}} className="carousel-indicators">
         {Array.from({ length: numSlides }).map((_, index) => (
           <button
             key={index}
-            className={`indicator ${index === Math.floor(currentIndex / itemsPerSlide) ? 'active' : ''}`} // Active indicator class
+            className={`indicator ${
+              index === Math.floor(currentIndex / itemsPerSlide) ? "active" : ""
+            }`} // Active indicator class
             onClick={() => goToSlide(index)}
           ></button>
         ))}
       </div>
     </div>
   );
-};
+}
