@@ -492,6 +492,7 @@ a.active{
   left: 8rem;
   bottom: 1.2rem;
   color: #FFF;
+  height: fit-content;
 }
 
 .brand-N-B h5 {
@@ -506,15 +507,17 @@ a.active{
 
 .brand-info-card{
   width: 18.5rem;
-  height: 12.5625rem;
+  min-height: 12.5625rem;
+  height: fit-content;
   border-radius: 4px;
   border: 1px solid #D0BCFF;
-  padding: 8px 0 0 15px;
+  padding: 8px 8px 8px 15px;
+  background-color: #FEF7FF;
 }
 
 .brand-info-card h3{
   color: #6750A4;
-  font-size: 30px;
+  font-size: 26px;
   font-style: normal;
   font-weight: 700;
   line-height: 24px;
@@ -533,10 +536,107 @@ a.active{
   flex-direction: row;
 }
 
-.info-brand div p{
+.info-brand div div{
   color: #7C7F82;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 400;
-  line-height: 24px;
+  height: fit-content;
   margin-bottom: 0;
 }
+
+.aboutBrandDiv{
+  width: 18.5rem;
+  max-height: fit-content;
+  border: 1px solid #D0BCFF;
+  margin-top: 6px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  background-color: #FEF7FF;
+  padding: 10px 13px 0 13px;
+}
+
+.overview-subscription-container{
+  display: flex;
+  flex-direction: row;
+}
+
+.overview-box{
+  width: 20rem;
+  height: 13rem;
+}
+
+.overview-box p{
+  margin-bottom: 0;
+}
+
+.subscription-box{
+  min-width: 20rem;
+  width: fit-content;
+  height: 13rem;
+  margin-left: 1rem;
+}
+
+.subscription-box p{
+  margin-bottom: 0;
+}
+
+.overview-box, .subscription-box, .spend-category-box, .campaigns-box {
+  background-color: #FEF7FF;
+  border: 1px solid #D0BCFF;
+  border-radius: 8px;
+  padding: 10px 15px;
+  box-shadow: 0px 0px 2.415px 0px rgba(23, 26, 31, 0.12), 0px 0px 1.208px 0px rgba(23, 26, 31, 0.07);
+}
+
+/* .brand-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+  margin-top: 20px;
+}
+
+.overview-subscription-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+h5 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #6750A4;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 14px;
+  margin: 5px 0;
+}
+
+.spend-category-chart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.campaigns-box {
+  grid-column: 1 / span 2;
+}
+
+.campaigns-box table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.campaigns-box th, .campaigns-box td {
+  padding: 10px;
+  text-align: left;
+}
+
+.campaigns-box th {
+  background-color: #f0f0f0;
+}
+
+.campaigns-box tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+ */
