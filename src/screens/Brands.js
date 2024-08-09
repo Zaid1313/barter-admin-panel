@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useCallback } from "react";
-// import { Table } from "react-bootstrap";
 import DataTable from "react-data-table-component";
 import { FaArrowRight } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
@@ -109,7 +108,7 @@ export default function Brands() {
       <h4 className="h4Style" style={{ marginTop: "20px" }}>
         All Brands
       </h4>
-      <div className="hotSectionTableHome">
+      <div className="allBrandsTable">
         <div className="tableControls">
           <select onChange={(e) => handleSortChange(e.target.value)}  value={sortOrder}>
             <option value="newest">Newest to Oldest</option>

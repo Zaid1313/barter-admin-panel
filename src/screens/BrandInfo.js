@@ -1,17 +1,29 @@
-import React from "react";
+import React, { useState, useEffect} from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { brandDataRow } from "./Brands";
 import { FaInstagram, FaXTwitter } from "react-icons/fa6";
 import { AiOutlineYoutube, AiOutlineFacebook } from "react-icons/ai";
 import { MdArrowForwardIos } from "react-icons/md";
 import { CiLinkedin } from "react-icons/ci";
+import Donut from "../components/Donut";
+// import DataTable from "react-data-table-component";
 import { Table } from "react-bootstrap";
-import { Doughnut } from "react-chartjs-2";
-import { Chart as ChartJS, ArcElement, Tooltip, Legend, Title } from "chart.js";
+
+const mockCampaignData = [
+  { title: 'Nike 1', status: 'Live', creatorsApplied: 200, accManager: 'Aman', platform: 'Instagram' },
+  { title: 'Nike 2', status: 'Closed', creatorsApplied: 400, accManager: 'Sahil', platform: 'Instagram' },
+  { title: 'Nike 3', status: 'Closed', creatorsApplied: 250, accManager: 'Harshita', platform: 'YouTube' },
+];
 
 export default function BrandInfo() {
   const { brandName } = useParams(); // Get the brand name from the URL
   const navigate = useNavigate();
+  const [campaignData, setCampaignData] = useState([]);
+
+  useEffect(() => {
+    // Simulate fetching data from an API
+    setCampaignData(mockCampaignData);
+  }, []);
 
   // Find the brand details using the brand name
   const brand = brandDataRow.find((b) => b.name === brandName);
@@ -28,9 +40,9 @@ export default function BrandInfo() {
           backgroundColor: "#FFF",
           padding: "0.5rem 1rem",
           borderRadius: "6px",
-          border: "1px solid red",
+          // border: "1px solid red",
           display: "flex",
-          // border:"none",
+          border:"none",
           justifyContent: "space-between",
           alignItems: "center",
           height: "3.5rem",
@@ -48,20 +60,8 @@ export default function BrandInfo() {
     navigate(`/dealsScreen`, { state: { extra } });
   };
 
-  const doughnutData = {
-    labels: [
-      "1M - 1pending",
-      "500k - 1pending",
-      "100k - 2pending",
-      "10k - 3pending",
-    ],
-    datasets: [
-      {
-        data: [1, 1, 2, 3],
-        backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56", "#4BC0C0"],
-        hoverBackgroundColor: ["#FF6384", "#36A2EB", "#FFCE56", "#4BC0C0"],
-      },
-    ],
+  const handleRowClick = (campaignTitle) => {
+    navigate(`/all-brands/campaign-info/${campaignTitle}`);
   };
 
   return (
@@ -131,25 +131,30 @@ export default function BrandInfo() {
             <div className="overview-subscription-container">
               <div className="overview-box">
                 <h5>Overview</h5>
-                <div className="d-flex flex-row">
+                <div
+                  style={{
+                    margin: "28px 15px 0 15px",
+                  }}
+                  className="justify-content-between d-flex flex-row"
+                >
                   <div>
-                    <div>
+                    <div className="d-flex flex-column align-items-center">
                       <p>60m+</p>
                       <p>Total Views</p>
                     </div>
-                    <div>
-                      <p>60m+</p>
-                      <p>Total Views</p>
+                    <div className="mt-4 d-flex flex-column align-items-center">
+                      <p>2 lac</p>
+                      <p>Total Amount</p>
                     </div>
                   </div>
                   <div>
-                    <div>
-                      <p>60m+</p>
-                      <p>Total Views</p>
+                    <div className="d-flex flex-column align-items-center">
+                      <p>500+</p>
+                      <p>Total Creators</p>
                     </div>
-                    <div>
-                      <p>60m+</p>
-                      <p>Total Views</p>
+                    <div className="mt-4 d-flex flex-column align-items-center">
+                      <p>60k</p>
+                      <p>Product Amount</p>
                     </div>
                   </div>
                 </div>
@@ -158,84 +163,78 @@ export default function BrandInfo() {
                 <h5>Subscription</h5>
                 <div className="d-flex flex-row">
                   <div>
-                    <p>Subscription Status:</p>
-                    <p>Amount:</p>
-                    <p>Start Day:</p>
-                    <p>Next Payment:</p>
-                    <p>Type:</p>
-                  </div>
-                  <div>
-                    <p>{brand.email}</p>
-                    <p></p>
-                    <p></p>
-                    <p></p>
-                    <p></p>
+                    <div className="d-flex flex-row">
+                      <p>Subscription status:</p>
+                      <p
+                        style={{
+                          marginLeft: "2rem",
+                          color: "#6750A4",
+                          wordBreak: "break-all",
+                        }}
+                      >
+                        {brand.email}
+                      </p>
+                    </div>
+                    <div className="d-flex flex-row">
+                      <p>Amount:</p>
+                      <p style={{ marginLeft: "5.2rem", color: "#6750A4" }}>
+                        12 lac
+                      </p>
+                    </div>
+                    <div className="d-flex flex-row">
+                      <p>Start Day:</p>
+                      <p style={{ marginLeft: "4.8rem", color: "#6750A4" }}>
+                        12/March/2024
+                      </p>
+                    </div>
+                    <div className="d-flex flex-row">
+                      <p>Next Payment:</p>
+                      <p style={{ marginLeft: "2.8rem", color: "#6750A4" }}>
+                        12/April/2024
+                      </p>
+                    </div>
+                    <div className="d-flex flex-row">
+                      <p>Type:</p>
+                      <p style={{ marginLeft: "6.8rem", color: "#6750A4" }}>
+                        {brand.subscription}
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          {/*<div className="overview-subscription-container">
-              <div className="overview-box">
-                <h5>Overview</h5>
-                <p>Total Views: 60M+</p>
-                <p>Total Creators: 500+</p>
-                <p>Total Amount: 2 lac</p>
-                <p>Product Amount: 60k</p>
-              </div>
-              <div className="subscription-box">
-                <h5>Subscription</h5>
-                <p>Subscription Status: {brand.email}</p>
-                <p>Amount: 12 lac</p>
-                <p>Start Day: 12/March/2024</p>
-                <p>Next Payment: 12/April/2024</p>
-                <p>Type: Platinum</p>
-              </div>
+          <div className="spend-category-box">
+            <h5>Spend by Category</h5>
+            <div>
+              <Donut />
             </div>
-            <div className="spend-category-box">
-              <h5>Spend by Category</h5>
-              <div className="spend-category-chart">
-                <Doughnut data={doughnutData} />
-              </div>
-            </div>
-            <div className="campaigns-box">
-              <h5>Campaigns</h5>
-              <Table responsive>
-                <thead>
-                  <tr>
-                    <th>Title</th>
-                    <th>Status</th>
-                    <th>Creators Applied</th>
-                    <th>Acc. Manager</th>
-                    <th>Platform</th>
+          </div>
+          <div className="campaigns-box">
+            <h5>Campaigns</h5>
+            <Table >
+              <thead>
+                <tr>
+                  <th>Title</th>
+                  <th>Status</th>
+                  <th>Creators Applied</th>
+                  <th>Acc. Manager</th>
+                  <th>Platform</th>
+                </tr>
+              </thead>
+              <tbody>
+              {campaignData.map((campaign, index) => (
+                  <tr style={{cursor:"pointer"}} key={index} onClick={() => handleRowClick(campaign.title)}>
+                    <td>{campaign.title}</td>
+                    <td>{campaign.status}</td>
+                    <td>{campaign.creatorsApplied}</td>
+                    <td>{campaign.accManager}</td>
+                    <td>{campaign.platform}</td>
                   </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Nike 1</td>
-                    <td>Live</td>
-                    <td>200</td>
-                    <td>Aman</td>
-                    <td>Instagram</td>
-                  </tr>
-                  <tr>
-                    <td>Nike 2</td>
-                    <td>Closed</td>
-                    <td>400</td>
-                    <td>Sahil</td>
-                    <td>Instagram</td>
-                  </tr>
-                  <tr>
-                    <td>Nike 3</td>
-                    <td>Closed</td>
-                    <td>250</td>
-                    <td>Harshita</td>
-                    <td>YouTube</td>
-                  </tr>
-                </tbody>
-              </Table>
-            </div>
-          </div> */}
+                ))}
+              </tbody>
+            </Table>
+          </div>
         </div>
         <div
           style={{
@@ -248,131 +247,71 @@ export default function BrandInfo() {
             <p>Sports</p>
             <div className="info-brand">
               <div>
-                <div className="d-flex flex-row justify-content-between">
+                <div className="d-flex flex-row">
                   <p>Email:</p>
-                  <p style={{marginLeft:"4rem"}}>{brand.email}</p>
+                  <p style={{ marginLeft: "4rem", wordBreak: "break-all" }}>
+                    {brand.email}
+                  </p>
                 </div>
-                <div className="d-flex flex-row justify-content-between">
+                <div className="d-flex flex-row">
                   <p>Phone No:</p>
-                  <p style={{marginLeft:"4rem"}}>634387428462</p>
+                  <p style={{ marginLeft: "2.1rem" }}>634387428462</p>
                 </div>
-                <div className="d-flex flex-row justify-content-between">
+                <div className="d-flex flex-row">
                   <p>Website:</p>
-                  <p style={{marginLeft:"4rem"}}>{brand.email}</p>
+                  <p style={{ marginLeft: "2.9rem" }}>www.nike.com</p>
                 </div>
-                <div className="d-flex flex-row justify-content-between">
-                  <p>www.nike.com</p>
-                  <div style={{marginLeft:"4rem"}}> 
-                  <Link to="https://www.youtube.com/">
-                    <FaInstagram
-                      style={{
-                        width: "24",
-                        height: "24",
-                        color: "black",
-                      }}
-                    />
-                  </Link>
-                  <Link>
-                    <AiOutlineYoutube
-                      style={{
-                        width: "24",
-                        height: "24",
-                        color: "black",
-                      }}
-                    />
-                  </Link>
-                  <Link>
-                    <CiLinkedin
-                      style={{
-                        width: "24",
-                        height: "24",
-                        color: "black",
-                      }}
-                    />
-                  </Link>
-                  <Link>
-                    <FaXTwitter
-                      style={{
-                        width: "24",
-                        height: "24",
-                        color: "black",
-                      }}
-                    />
-                  </Link>
-                  <Link>
-                    <AiOutlineFacebook
-                      style={{
-                        width: "24",
-                        height: "24",
-                        color: "black",
-                      }}
-                    />
-                  </Link>
-                </div>
+                <div className="d-flex flex-row">
+                  <p>Social Media:</p>
+                  <div style={{ marginLeft: "1rem" }}>
+                    <Link to="https://www.youtube.com/">
+                      <FaInstagram
+                        style={{
+                          width: "24",
+                          height: "24",
+                          color: "black",
+                        }}
+                      />
+                    </Link>
+                    <Link>
+                      <AiOutlineYoutube
+                        style={{
+                          width: "24",
+                          height: "24",
+                          color: "black",
+                        }}
+                      />
+                    </Link>
+                    <Link>
+                      <CiLinkedin
+                        style={{
+                          width: "24",
+                          height: "24",
+                          color: "black",
+                        }}
+                      />
+                    </Link>
+                    <Link>
+                      <FaXTwitter
+                        style={{
+                          width: "24",
+                          height: "24",
+                          color: "black",
+                        }}
+                      />
+                    </Link>
+                    <Link>
+                      <AiOutlineFacebook
+                        style={{
+                          width: "24",
+                          height: "24",
+                          color: "black",
+                        }}
+                      />
+                    </Link>
+                  </div>
                 </div>
               </div>
-              {/* <div>
-                <div>Email:</div>
-                <div>Phone No:</div>
-                <div>Website:</div>
-                <div>Social Media:</div>
-              </div>
-              <div
-                style={{
-                  marginLeft: "15px",
-                }}
-              >
-                <div>{brand.email}</div>
-                <div>634387428462</div>
-                <div>www.nike.com</div>
-                <div>
-                  <Link to="https://www.youtube.com/">
-                    <FaInstagram
-                      style={{
-                        width: "24",
-                        height: "24",
-                        color: "black",
-                      }}
-                    />
-                  </Link>
-                  <Link>
-                    <AiOutlineYoutube
-                      style={{
-                        width: "24",
-                        height: "24",
-                        color: "black",
-                      }}
-                    />
-                  </Link>
-                  <Link>
-                    <CiLinkedin
-                      style={{
-                        width: "24",
-                        height: "24",
-                        color: "black",
-                      }}
-                    />
-                  </Link>
-                  <Link>
-                    <FaXTwitter
-                      style={{
-                        width: "24",
-                        height: "24",
-                        color: "black",
-                      }}
-                    />
-                  </Link>
-                  <Link>
-                    <AiOutlineFacebook
-                      style={{
-                        width: "24",
-                        height: "24",
-                        color: "black",
-                      }}
-                    />
-                  </Link>
-                </div>
-              </div> */}
             </div>
           </div>
           <div className="aboutBrandDiv" style={{}}>

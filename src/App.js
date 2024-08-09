@@ -9,6 +9,7 @@ import SideBar from "./components/Sidebar";
 import Navbar from "./components/Navbar";
 import React, { useState } from "react";
 import BrandInfo from "./screens/BrandInfo.js";
+import CampaignInfo from "./screens/CampaignInfo.js";
 
 function App() {
   const [isOpen, setIsOpen] = useState(false);
@@ -27,6 +28,7 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/all-brands" element={<Brands />} />
                 <Route path="/all-brands/brand-info/:brandName" element={<BrandInfo/>} />
+                <Route path="/all-brands/campaign-info/:campaignTitle" element={<CampaignInfo/>} />
               </Routes>
           </div>
           {/* <footer>

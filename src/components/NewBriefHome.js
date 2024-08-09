@@ -157,7 +157,6 @@ export default function NewBriefHomeCarousel() {
               }}
               className="POC-drop"
               onChange={(e) => handleOptionChange(item.id, e.target.value)}
-              
             >
               <option style={{ color: "gray" }} value="">
                 Assign POC

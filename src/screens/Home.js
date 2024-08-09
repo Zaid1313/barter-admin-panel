@@ -1,8 +1,51 @@
 import React from "react";
 import ReportCarousel from "../components/ReportCarousel";
 import { FaArrowRight } from "react-icons/fa6";
-import { Table } from "react-bootstrap";
+// import { Table } from "react-bootstrap";
+import DataTable from "react-data-table-component";
 import NewBriefHomeCarousel from "../components/NewBriefHome";
+
+const hotDealColumns = [
+  {
+    name: 'S.No',
+    selector: row => row.sno,
+    sortable: true,
+  },
+  {
+    name: 'Brand',
+    selector: row => row.brand,
+    sortable: true,
+  },
+];
+
+const hotDealData = [
+  {
+    id: 1,
+    sno: 1,
+    brand: 'Kurkure',
+  },
+];
+
+const hotCreatorColumns = [
+  {
+    name: 'S.No',
+    selector: row => row.sno,
+    sortable: true,
+  },
+  {
+    name: 'Creators',
+    selector: row => row.creator,
+    sortable: true,
+  },
+];
+
+const hotCreatorData = [
+  {
+    id: 1,
+    sno: 1,
+    creator: 'Kurkure',
+  },
+];
 
 export default function Home() {
   return (
@@ -58,20 +101,11 @@ export default function Home() {
                   }}
                   className="hotSectionTableHome"
                 >
-                  <Table>
-                    <thead>
-                      <tr>
-                        <th>S.No</th>
-                        <th>Brand</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>1</td>
-                        <td>Kurkure</td>
-                      </tr>
-                    </tbody>
-                  </Table>
+                   <DataTable
+                    columns={hotDealColumns}
+                    data={hotDealData}
+                    noHeader
+                  />
                 </div>
               </div>
               <div>
@@ -86,20 +120,11 @@ export default function Home() {
                   }}
                   className="hotSectionTableHome"
                 >
-                  <Table>
-                    <thead>
-                      <tr>
-                        <th>S.No</th>
-                        <th>Brand</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>1</td>
-                        <td>Kurkure</td>
-                      </tr>
-                    </tbody>
-                  </Table>
+                  <DataTable
+                    columns={hotDealColumns}
+                    data={hotDealData}
+                    noHeader
+                  />
                 </div>
               </div>
             </div>
@@ -115,20 +140,11 @@ export default function Home() {
                   }}
                   className="hotSectionTableHome"
                 >
-                  <Table>
-                    <thead>
-                      <tr>
-                        <th>S.No</th>
-                        <th>Creators</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>1</td>
-                        <td>Kurkure</td>
-                      </tr>
-                    </tbody>
-                  </Table>
+                  <DataTable
+                    columns={hotCreatorColumns}
+                    data={hotCreatorData}
+                    noHeader
+                  />
                 </div>
               </div>
               <div>
@@ -143,20 +159,11 @@ export default function Home() {
                   }}
                   className="hotSectionTableHome"
                 >
-                  <Table>
-                    <thead>
-                      <tr>
-                        <th>S.No</th>
-                        <th>Creators</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>1</td>
-                        <td>Kurkure</td>
-                      </tr>
-                    </tbody>
-                  </Table>
+                  <DataTable
+                    columns={hotCreatorColumns}
+                    data={hotCreatorData}
+                    noHeader
+                  />
                 </div>
               </div>
             </div>
